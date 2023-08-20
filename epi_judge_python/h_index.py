@@ -4,7 +4,12 @@ from test_framework import generic_test
 
 
 def h_index(citations: List[int]) -> int:
-    # TODO - you fill in here.
+    total_citation = len(citations)
+    citations.sort()
+    for index, citation in enumerate(citations):
+        if citation >= total_citation - index:
+            return total_citation - index
+
     return 0
 
 
