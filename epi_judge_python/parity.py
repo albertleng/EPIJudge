@@ -1,9 +1,36 @@
 from test_framework import generic_test
 
+'''
+The parity of a binary word is 1 if the numbe of 1s in the word is odd; otherwise, it is 0.
+'''
+
+
+# 1. Bruce Force
+# def parity(x: int) -> int:
+#     result = 0
+#     while x:
+#         result ^= x & 1
+#         x >>= 1
+#     return result
+
+
+# 2. Via looping of resetting the 1st bit of x and XOR result
+# def parity(x: int) -> int:
+#     result = 0
+#     while x:
+#         result ^= 1
+#         x &= x - 1 # Reset the 1st set bit
+#     return result
 
 def parity(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    x ^= x >> 32
+    x ^= x >> 16
+    x ^= x >> 8
+    x ^= x >> 4
+    x ^= x >> 2
+    x ^= x >> 1
+
+    return x & 1
 
 
 if __name__ == '__main__':
